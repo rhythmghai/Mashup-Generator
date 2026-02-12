@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mashup Generator</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        label { display: block; margin-top: 10px; }
+        input[type="text"], input[type="number"], input[type="email"] { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 20px; padding: 10px 20px; cursor: pointer; background-color: #007BFF; color: white; border: none; border-radius: 4px; }
+        button:hover { background-color: #0056b3; }
+        .error { color: red; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Mashup Generator</h1>
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    <form action="/process" method="post">
+        <label for="singer">Singer Name:</label>
+        <input type="text" id="singer" name="singer" required>
+
+        <label for="count">Number of Videos (N > 10):</label>
+        <input type="number" id="count" name="count" min="11" required>
+
+        <label for="duration">Duration (Seconds, Y > 20):</label>
+        <input type="number" id="duration" name="duration" min="21" required>
+
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="submit">Generate Mashup</button>
+    </form>
+</body>
+</html>

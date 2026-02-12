@@ -1,8 +1,9 @@
+
 venv/
 __pycache__/
 *.pyc
-videos/
-audios/
-clips/
-output/
 .env
+*.mp3
+*.zip
+temp_*/
+.DS_Store

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mashup Result</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mashup Processed</h1>
+
+    {% if success %}
+    <div class="success">
+        <h2>Success!</h2>
+        <p>{{ message }}</p>
+    </div>
+    {% else %}
+    <div class="error">
+        <h2>Error!</h2>
+        <p>{{ message }}</p>
+    </div>
+    {% endif %}
+
+    <p><a href="/">Back to Home</a></p>
+</body>
+
+</html>
