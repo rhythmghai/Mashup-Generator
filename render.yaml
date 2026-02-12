@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: mashup-generator
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: MASHUP_EMAIL
+        sync: false
+      - key: MASHUP_PASSWORD
+        sync: false
