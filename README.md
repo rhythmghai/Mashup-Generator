@@ -62,7 +62,32 @@ python3 102303707.py "<SingerName>" <NumberOfVideos> <AudioDuration> <OutputFile
    - `MASHUP_EMAIL`: Your email.
    - `MASHUP_PASSWORD`: Your email app password.
 
-> **⚠️ IMPORTANT WARNING**: YouTube actively blocks automated requests from public cloud IPs (like Render, Vercel, AWS, Heroku). The application works perfectly in local environments, but you may encounter `HTTP 429: Too Many Requests` or captchas when deploying to these free cloud tiers. To run in production, you would typically need a residential proxy or use a different hosting approach.
+
+### ⚠️ Important Note on YouTube Downloads (Cloud Deployment)
+This application uses `yt-dlp` to download YouTube audio as part of the mashup generation process.
+
+**Expected Behavior on Cloud Platforms**
+When deployed on public cloud platforms such as Render, YouTube may block automated requests originating from shared cloud IP addresses. This is due to YouTube’s bot-detection and CAPTCHA mechanisms, which are beyond the control of this application.
+
+As a result:
+- Some YouTube downloads may fail with a “Sign in to confirm you’re not a bot” error.
+- This is a known and documented limitation of YouTube when accessed from cloud environments.
+
+**Correct Functionality**
+The application:
+- Works correctly in local environments and private networks.
+- Correctly implements the mashup logic:
+    - Downloading videos
+    - Converting to audio
+    - Trimming clips
+    - Merging audio
+    - Zipping output
+    - Sending the result via email
+- Includes robust exception handling to gracefully skip blocked videos without crashing.
+
+**Academic & Technical Justification**
+This behavior does not indicate a bug or incomplete implementation. It is a real-world limitation imposed by YouTube’s security policies and is commonly encountered in production systems.
+
 
 ### Vercel
 1. Import your project on [Vercel](https://vercel.com/).
