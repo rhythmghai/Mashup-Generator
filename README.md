@@ -48,5 +48,25 @@ python3 102303707.py "<SingerName>" <NumberOfVideos> <AudioDuration> <OutputFile
 ## Project Structure
 - `102303707.py`: CLI Entry point.
 - `app.py`: Web Service Backend (Flask).
-- `mashup_lib.py`: Shared core logic (Download, Merge, Email).
 - `templates/`: HTML templates for the Web App.
+
+## Deployment
+
+### Render
+1. Create a new **Web Service** on [Render](https://render.com/).
+2. Connect your GitHub repository.
+3. Render should automatically detect `python` environment.
+4. **Build Command**: `pip install -r requirements.txt`
+5. **Start Command**: `gunicorn app:app`
+6. **Environment Variables**: Add the following in the "Environment" tab:
+   - `MASHUP_EMAIL`: Your email.
+   - `MASHUP_PASSWORD`: Your email app password.
+
+> **⚠️ IMPORTANT WARNING**: YouTube actively blocks automated requests from public cloud IPs (like Render, Vercel, AWS, Heroku). The application works perfectly in local environments, but you may encounter `HTTP 429: Too Many Requests` or captchas when deploying to these free cloud tiers. To run in production, you would typically need a residential proxy or use a different hosting approach.
+
+### Vercel
+1. Import your project on [Vercel](https://vercel.com/).
+2. Framework Preset: **Other**.
+3. The `vercel.json` file in the repository will handle the configuration.
+4. Add Environment Variables in the Project Settings.
+**Note**: Vercel has a strict 10-second timeout for serverless functions on the free plan. The Mashup process (downloading/processing) will likely exceed this and fail. **Render is recommended for this application.**

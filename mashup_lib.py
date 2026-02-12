@@ -37,6 +37,7 @@ def search_and_download_videos(singer_name, n_videos, output_dir="temp_downloads
         'ignoreerrors': True,
         # Search query
         'default_search': 'ytsearch{}'.format(n_videos),
+        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
     }
 
     print(f"Downloading {n_videos} videos for {singer_name}...")
