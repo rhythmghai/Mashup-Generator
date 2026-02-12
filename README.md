@@ -50,18 +50,6 @@ python3 102303707.py "<SingerName>" <NumberOfVideos> <AudioDuration> <OutputFile
 - `app.py`: Web Service Backend (Flask).
 - `templates/`: HTML templates for the Web App.
 
-## Deployment
-
-### Render
-1. Create a new **Web Service** on [Render](https://render.com/).
-2. Connect your GitHub repository.
-3. Render should automatically detect `python` environment.
-4. **Build Command**: `pip install -r requirements.txt`
-5. **Start Command**: `gunicorn app:app`
-6. **Environment Variables**: Add the following in the "Environment" tab:
-   - `MASHUP_EMAIL`: Your email.
-   - `MASHUP_PASSWORD`: Your email app password.
-
 
 ### ⚠️ Important Note on YouTube Downloads (Cloud Deployment)
 This application uses `yt-dlp` to download YouTube audio as part of the mashup generation process.
@@ -87,11 +75,3 @@ The application:
 
 **Academic & Technical Justification**
 This behavior does not indicate a bug or incomplete implementation. It is a real-world limitation imposed by YouTube’s security policies and is commonly encountered in production systems.
-
-
-### Vercel
-1. Import your project on [Vercel](https://vercel.com/).
-2. Framework Preset: **Other**.
-3. The `vercel.json` file in the repository will handle the configuration.
-4. Add Environment Variables in the Project Settings.
-**Note**: Vercel has a strict 10-second timeout for serverless functions on the free plan. The Mashup process (downloading/processing) will likely exceed this and fail. **Render is recommended for this application.**
